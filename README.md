@@ -1,6 +1,6 @@
 # Mini-Practice-Projects
 <b><p> 
-  Practising technologies such as: HTML5, CSS3, Bootstrap5 and PHP.
+  Practising technologies such as: HTML5, CSS3, Bootstrap5, PHP and JS.
 </p></b>
 
 <b><p>
@@ -9,3 +9,5 @@
 
 
 # Exelpore the files and check out what actually I can do and what I'm focused on, and what I'm learning.
+
+Note: Added JS to learning practice and started to practice it more.
