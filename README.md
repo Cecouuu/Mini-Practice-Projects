@@ -10,7 +10,7 @@
 
 # Exelpore the files and check out what actually I can do and what I'm focused on, and what I'm learning.
 
-#Future projects: 
+# Future projects: 
 - calculator(php/js);
 - weather app by API.
 
