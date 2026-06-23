@@ -46,7 +46,7 @@
                     $result = true;
                 }
                 elseif ($operator == "**"){
-                    $totalSum = pow($number1, $number2);
+                    $totalSum = Pow($number1, $number2);
                     $result = true;
                 }
                elseif($operator == '/' && $number2 == 0){
