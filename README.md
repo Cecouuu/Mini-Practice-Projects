@@ -17,3 +17,4 @@
 - weather app by API.
 
 Note: Added JS to learning practice and started to practice it more.
+To do: fix the files

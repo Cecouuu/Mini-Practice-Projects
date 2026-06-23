@@ -46,10 +46,10 @@
                     $result = true;
                 }
                 elseif ($operator == "**"){
-                    $totalSum = Pow($number1, $number2);
+                    $totalSum = pow($number1, $number2);
                     $result = true;
                 }
-               elseif($operator == "/" && $number2 == 0){
+               elseif($operator == '/' && $number2 == 0){
                     $alert = "Division by zero is not allowed.";
                 }
             }
