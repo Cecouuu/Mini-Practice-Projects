@@ -15,6 +15,7 @@
 # Future projects: 
 - weather app by API.
 - Password generator (PHP).
+- Live Greeting (JS)
 
 Note: Added JS to learning practice and started to practice it more.
 To do: fix the files
