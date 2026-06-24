@@ -14,10 +14,17 @@
 
 # Future projects: 
 - Weather app by API.
-- Password generator (PHP).
-- Live Greeting (JS)
-- Counter for symbols (JS)
-- Dark Mode (JS)
+
+  PHP Projects:
+- Password generator
+- List of students
+- Catalog for games
+
+  JavaScript Projects:
+- Live Greeting
+- Counter for symbols
+- Dark Mode
+- Show/Hide Password
 
 Note: Added JS to learning practice and started to practice it more.
 To do: fix the files
