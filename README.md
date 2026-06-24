@@ -17,6 +17,7 @@
 - Password generator (PHP).
 - Live Greeting (JS)
 - Counter for symbols (JS)
+- Dark Mode (JS)
 
 Note: Added JS to learning practice and started to practice it more.
 To do: fix the files
