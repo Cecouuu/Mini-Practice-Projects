@@ -10,9 +10,7 @@
 <body class="bg-light">
 <div class="container d-flex align-items-center justify-content-center">
 
-    <?php
 
-    ?>
 
 
 
