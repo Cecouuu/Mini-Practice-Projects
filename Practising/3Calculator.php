@@ -10,25 +10,97 @@
 <body class="bg-light">
 <div class="container d-flex align-items-center justify-content-center">
 
+
     <?php
 
+
+    $number1 = $_POST['Number1'] ?? null;
+    $number2 = $_POST['Number2'] ?? null;
+    $operator = $_POST['Operator'] ?? '';
+
+    $alert = '';
+    $result = false;
+
+    $totalSum = 0;
+    if (isset($_POST['Submit'])) {
+
+        if(!empty($_POST['Number1']) && !empty($_POST['Number2']) && !empty($_POST['Operator'])) {
+            if ($operator == '+') {
+                $totalSum = $number1 + $number2;
+                $result = true;
+            }
+            elseif ($operator == '-') {
+                $totalSum = $number1 - $number2;
+                $result = true;
+            }
+            elseif ($operator == "*"){
+                $totalSum = $number1 * $number2;
+                $result = true;
+            }
+            elseif ($operator == '/') {
+                $totalSum = $number1 / $number2;
+                $result = true;
+            }
+            elseif ($operator == "%"){
+                $totalSum = $number1 % $number2;
+                $result = true;
+            }
+            elseif ($operator == "**"){
+                $totalSum = pow($number1, $number2);
+                $result = true;
+            }
+            elseif($operator == '/' && $number2 == 0){
+                $alert = "Division by zero is not allowed.";
+            }
+        }
+        else {
+            $alert = "Please enter valid values that are needed!";
+        }
+
+
+    }
     ?>
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="3Calculator.php" class="">
-                <label for="passwordLength"></label>
-                <input type="number" id="passwordLength" name="passwordLength" placeholder="Choose password length."><br>
+            <form method="POST" action="3Calculator.php" class="form-inline mt-5">
 
-                <input type="checkbox" name="uppercase" id="uppercase" value="Uppercase">
-                <label for="uppercase">UpperCase</label><br>
+                <div class="form-group">
+                    <label for="number1">Type your first number:</label>
+                    <input type="number" id="number1" name="Number1" class="form-control" value="<?= $number1 ?>">
+                </div>
+                <div class="form-group">
+                    <label for="number2">Type your second number:</label>
+                    <input type="number" id="number2" name="Number2" class="form-control" value="<?= $number2 ?>">
+                </div>
 
-                <input type="checkbox" name="lowercase" id="lowercase" value="Lowercase">
-                <label for="lowercase">LowerCase</label><br>
+                <div class="form-group">
+                    <label for="operator">Method</label><br>
+                    <select class="form-control" id="operator" name="Operator">
+                        <option value="">Choose method</option>
+                        <option value="+">Addition (+)</option>
+                        <option value="-">Subtraction (-)</option>
+                        <option value="*">Multiplication (*)</option>
+                        <option value="/">Division (/)</option>
+                        <option value="%">Modulo (%)</option>
+                        <option value="**">Power (^)</option>
+                    </select>
+                </div>
 
-                <input type="checkbox" name="specialSymbols" id="specialSymbols" value="SpecialSymbols">
-                <label for="specialSymbols">SpecialSymbols</label><br>
+                <div class="form-group mt-2">
+                    <input type="submit" class="btn btn-primary" id="submit" name="Submit">
+                </div>
 
-                <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+                <?php if ($result): ?>
+                    <div class="alert alert-success" role="alert">
+                        <p><?php echo ("The final answer  is: {$_POST['Number1']} {$_POST['Operator']} {$_POST['Number2']}  =  {$totalSum} ") ?></p>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($_POST['Submit']) && $totalSum == 0): ?>
+                    <div class="alert alert-warning" role="alert">
+                        <p><?php echo $alert ?></p>
+                    </div>
+                <?php endif; ?>
             </form>
         </div>
     </div>
@@ -41,4 +113,3 @@
 </body>
 
 </html>
-
