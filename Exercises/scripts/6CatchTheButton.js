@@ -1,3 +1,5 @@
+alert("JavaScript Loaded");
+
     const btnCatchMe = document.querySelector("#btnCatchMe");
     const pointsText = document.querySelector("#displayPoints");
     let points = 0;
