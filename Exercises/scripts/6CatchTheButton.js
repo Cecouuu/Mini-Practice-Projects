@@ -1,5 +1,8 @@
     const btnCatchMe = document.querySelector("#btnCatchMe");
-    const pointsText = document.querySelector("#displayPoints");
+    const colorPoints = document.querySelector("#colorPoints")
+    const timerText = document.querySelector("#timer");
+    const gameOver = document.querySelector("#gameOver");
+    const finalPoints = document.querySelector("#finalPoints");
     let points = 0;
     let time = 30;
 
@@ -28,17 +31,37 @@
         }
 
         function pointsColors (){
-            if (points >= 10 && points < 20){
+            if (points < 10){
+                    colorPoints.style.color = "red";
+                }
+                else if (points >= 10 && points < 20)
+                {
+                   colorPoints.style.color = "orange";
+                }
+                else if (points >= 20){
+                    colorPoints.style.color = "green";
+                }
+        }
+
+        setInterval(function (){
+            time--;
+            if(time <= 30 && time >= 0){
+                timerText.textContent = `${time}`;
+            }
+            else {
+                btnCatchMe.style.display = "none";
+                gameOver.textContent = "GAME OVER";
 
             }
-        }
+        },1000)
 
         btnCatchMe.addEventListener("click", function (){
             points++;
-            pointsText.textContent = `Points: ${points}`;
+            colorPoints.textContent = `${points}`;
 
                 moveBtn();
                 decreaseBtnSize();
+                pointsColors();
         })
 
 
