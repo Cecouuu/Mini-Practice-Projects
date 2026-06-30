@@ -7,24 +7,35 @@
     const colorPoints = document.querySelector("#colorPoints")
     const finalPoints = document.querySelector("#finalPoints");
     const finalPointsColor = document.querySelector("#finalPointsColor");
+    const highScoreColor = document.querySelector("#highScoreColor");
 
     const displayGame = document.querySelector("#displayGame");
     const btnStartGame = document.querySelector("#btnStartGame");
     const btnPlayAgain = document.querySelector("#btnPlayAgain");
 
     let points = 0;
-    let time = 30;
+    let time = 10;
+    let highScore = 0;
+
+    let maxX;
+    let maxY;
+
+    let btnCatchMeWidth;
+    let btnCatchMeHeight;
 
     const gameArea = document.querySelector("#gameArea");
-    // Full size of the button
-    let btnCatchMeHeight = btnCatchMe.offsetHeight;
-    let btnCatchMeWidth = btnCatchMe.offsetWidth;
 
-    // How much can button go in the box without going out of the box, gameArea.clientHeight/clientWidth -
-    // - is the size of the box without the border so it could calculate the actual visible size with size and padding!
-    // Note: be careful when adding a padding it may change the size!
-    const maxY = gameArea.clientHeight - btnCatchMeHeight;
-    const maxX = gameArea.clientWidth - btnCatchMeWidth;
+    function calcGameArea (){
+        // Full size of the button
+        btnCatchMeHeight = btnCatchMe.offsetHeight;
+        btnCatchMeWidth = btnCatchMe.offsetWidth;
+
+        // How much can button go in the box without going out of the box, gameArea.clientHeight/clientWidth -
+        // - is the size of the box without the border so it could calculate the actual visible size with size and padding!
+        // Note: be careful when adding a padding it may change the size!
+        maxY = gameArea.clientHeight - btnCatchMeHeight;
+        maxX = gameArea.clientWidth - btnCatchMeWidth;
+    }
 
         function moveBtn (){
             btnCatchMe.style.top = Math.floor((Math.random() * maxY) + 1) + "px";
@@ -47,21 +58,29 @@
             if (points < 10){
                     colorPoints.style.color = "red";
                     finalPointsColor.style.color = "red";
+                    highScoreColor.style.color = "red";
                 }
                 else if (points >= 10 && points < 20)
                 {
-                   colorPoints.style.color = "orange";
-                   finalPointsColor.style.color = "orange";
+                    colorPoints.style.color = "orange";
+                    finalPointsColor.style.color = "orange";
+                    highScoreColor.style.color = "orange";
                 }
                 else if (points >= 20){
                     colorPoints.style.color = "green";
                     finalPointsColor.style.color = "green";
+                    highScoreColor.style.color = "green";
                 }
         }
 
         function startGame() {
             displayGame.style.display = "block";
             btnStartGame.style.display = "none";
+
+            calcGameArea();
+            moveBtn();
+            decreaseBtnSize();
+            pointsColors();
 
             const timer = setInterval(function (){
                 time--;
@@ -70,31 +89,32 @@
                     timerText.textContent = `${time}`;
                 }
                 else {
+                    clearInterval(timer);
+
                     btnCatchMe.style.display = "none";
                     gameOver.textContent = "GAME OVER";
 
-                    clearInterval(timer);
-
                     finalPoints.style.display = "block";
                     finalPointsColor.textContent = `${points}`;
+                    highScoreColor.textContent = `${points}`;
+
+                    // OPRAVI HIGH SCORA I VIJ KAKVO TRQBVASHE DA NAPRAVISH!
+                    if(points === 0 ){
+
+                    }else{
+                        localStorage.setItem("highScore",`${points}`);
+                        highScore = localStorage.getItem("highScore");
+                    }
+
                 }
             },1000)
-
-
         }
-        btnCatchMe.addEventListener("click", function (){
+
+    btnCatchMe.addEventListener("click", function (){
         points++;
         colorPoints.textContent = `${points}`;
 
-        moveBtn();
         decreaseBtnSize();
         pointsColors();
-
+        moveBtn();
     })
-
-
-
-
-
-
-
