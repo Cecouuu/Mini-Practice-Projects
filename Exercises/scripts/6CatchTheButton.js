@@ -73,15 +73,7 @@
                 }
         }
 
-        function startGame() {
-            displayGame.style.display = "block";
-            btnStartGame.style.display = "none";
-
-            calcGameArea();
-            moveBtn();
-            decreaseBtnSize();
-            pointsColors();
-
+        function timerForGame (){
             const timer = setInterval(function (){
                 time--;
                 pointsColors();
@@ -96,18 +88,41 @@
 
                     finalPoints.style.display = "block";
                     finalPointsColor.textContent = `${points}`;
-                    highScoreColor.textContent = `${points}`;
 
-                    // OPRAVI HIGH SCORA I VIJ KAKVO TRQBVASHE DA NAPRAVISH!
-                    if(points === 0 ){
-
-                    }else{
-                        localStorage.setItem("highScore",`${points}`);
-                        highScore = localStorage.getItem("highScore");
-                    }
-
+                    saveHighScore();
                 }
             },1000)
+        }
+
+        function loadHighScore (){
+            if (localStorage.getItem("HighScore")){
+                highScore = (Number(localStorage.getItem("HighScore")));
+                highScoreColor.textContent = `${highScore}`;
+            }else {
+                highScore = 0;
+                highScoreColor.textContent = `${highScore}`;
+            }
+        }
+
+        function saveHighScore(){
+            highScoreColor.textContent = `${highScore}`;
+            if (points > highScore){
+                highScore = points;
+                localStorage.setItem("HighScore", `${highScore}`);
+                highScoreColor.textContent = `${highScore}`;
+            }
+        }
+
+        function startGame() {
+            displayGame.style.display = "block";
+            btnStartGame.style.display = "none";
+
+            calcGameArea();
+            moveBtn();
+            decreaseBtnSize();
+            pointsColors();
+            timerForGame();
+
         }
 
     btnCatchMe.addEventListener("click", function (){
@@ -118,3 +133,5 @@
         pointsColors();
         moveBtn();
     })
+
+    loadHighScore();
