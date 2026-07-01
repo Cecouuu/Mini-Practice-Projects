@@ -1,7 +1,12 @@
+.form-group #gameOver + #btnPlayAgain{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f30d0d;
+    }
 
-.form-group #gameOver{
+.form-group{
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
-    color: #f30d0d;
 }

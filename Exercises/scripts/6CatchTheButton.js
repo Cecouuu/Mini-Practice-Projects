@@ -14,7 +14,7 @@
     const btnPlayAgain = document.querySelector("#btnPlayAgain");
 
     let points = 0;
-    let time = 10;
+    let time = 3;
     let highScore = 0;
 
     let maxX;
@@ -54,44 +54,60 @@
             }
         }
 
-        function pointsColors (){
+        function updatePointsColors (){
             if (points < 10){
                     colorPoints.style.color = "red";
-                    finalPointsColor.style.color = "red";
-                    highScoreColor.style.color = "red";
                 }
                 else if (points >= 10 && points < 20)
                 {
                     colorPoints.style.color = "orange";
-                    finalPointsColor.style.color = "orange";
-                    highScoreColor.style.color = "orange";
                 }
                 else if (points >= 20){
                     colorPoints.style.color = "green";
-                    finalPointsColor.style.color = "green";
-                    highScoreColor.style.color = "green";
                 }
+        }
+        function updateFinalPointsColors (){
+            if (points < 10){
+                finalPointsColor.style.color = "red";
+            }
+            else if (points >= 10 && points < 20)
+            {
+                finalPointsColor.style.color = "orange";
+            }
+            else if (points >= 20){
+                finalPointsColor.style.color = "green";
+            }
+        }
+
+        function updateHighScoreColor (){
+            if (highScore < 10){
+                highScoreColor.style.color = "red";
+            }
+            else if (highScore >= 10 && highScore < 20)
+            {
+                highScoreColor.style.color = "orange";
+            }
+            else if (highScore >= 20){
+                highScoreColor.style.color = "green";
+            }
         }
 
         function timerForGame (){
             const timer = setInterval(function (){
                 time--;
-                pointsColors();
+                updatePointsColors();
                 if(time <= 30 && time >= 0){
                     timerText.textContent = `${time}`;
                 }
                 else {
-                    clearInterval(timer);
-
-                    btnCatchMe.style.display = "none";
-                    gameOver.textContent = "GAME OVER";
-
-                    finalPoints.style.display = "block";
-                    finalPointsColor.textContent = `${points}`;
-
                     saveHighScore();
+                    displayGameOver();
+                    playAgain();
                 }
             },1000)
+            if (time === 0){
+                clearInterval(timer);
+            }
         }
 
         function loadHighScore (){
@@ -106,6 +122,7 @@
 
         function saveHighScore(){
             highScoreColor.textContent = `${highScore}`;
+
             if (points > highScore){
                 highScore = points;
                 localStorage.setItem("HighScore", `${highScore}`);
@@ -113,16 +130,40 @@
             }
         }
 
+        function displayGameOver (){
+            btnCatchMe.style.display = "none";
+            gameOver.textContent = "GAME OVER";
+
+            finalPoints.style.display = "block";
+            finalPointsColor.textContent = `${points}`;
+
+            btnPlayAgain.style.display = "block";
+        }
+
+        function playAgain (){
+            if(time === 0){
+                points = 0;
+                time = 30;
+                finalPointsColor.textContent = "";
+                colorPoints.textContent = "";
+                gameOver.style.display = "none";
+                btnCatchMe.style.display = "block";
+                startGame();
+            }
+        }
+
         function startGame() {
             displayGame.style.display = "block";
             btnStartGame.style.display = "none";
 
+            loadHighScore();
             calcGameArea();
             moveBtn();
             decreaseBtnSize();
-            pointsColors();
+            updatePointsColors();
+            updateFinalPointsColors();
+            updateHighScoreColor();
             timerForGame();
-
         }
 
     btnCatchMe.addEventListener("click", function (){
@@ -130,8 +171,14 @@
         colorPoints.textContent = `${points}`;
 
         decreaseBtnSize();
-        pointsColors();
+        updatePointsColors();
+        updateFinalPointsColors();
+        updateHighScoreColor();
         moveBtn();
+    })
+
+    btnPlayAgain.addEventListener("click", function (){
+        playAgain();
     })
 
     loadHighScore();
