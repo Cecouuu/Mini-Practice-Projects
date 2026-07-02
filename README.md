@@ -32,6 +32,7 @@
 
 
 #New projects on going:
-- Catch the button game. js+php.
+- Catch the button game. js+php.<br>
+
 Note: Added JS to learning practice and started to practice it more.
 To do: fix the files
