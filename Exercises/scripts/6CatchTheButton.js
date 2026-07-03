@@ -197,7 +197,7 @@ alert("Js loaded!");
             gameOver.textContent = "GAME OVER";
 
             finalPoints.style.display = "flex";
-            finalPointsColor.style.display = "flex";
+            finalPointsColor.style.display = "block";
             finalPointsColor.textContent = `${points}`;
 
             btnPlayAgain.style.display = "block";
