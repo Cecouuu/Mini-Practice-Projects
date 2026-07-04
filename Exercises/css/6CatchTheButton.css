@@ -4,3 +4,11 @@
     justify-content: center;
     color: #f30d0d;
 }
+
+#btnCatchMe {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 120px;
+    height: 45px;
+}

@@ -14,6 +14,9 @@ alert("Js loaded!");
     const btnStartGame = document.querySelector("#btnStartGame");
     const btnPlayAgain = document.querySelector("#btnPlayAgain");
 
+    let originalBtnCatchMeWidth;
+    let originalBtnCatchMeHeight;
+
     let points = 0;
     let time;
     let highScore = 0;
@@ -24,21 +27,23 @@ alert("Js loaded!");
     let maxX;
     let maxY;
 
-    let btnCatchMeWidth;
-    let btnCatchMeHeight;
+
 
     const gameArea = document.querySelector("#gameArea");
 
-    function calcGameArea (){
-        // Full size of the button
-        btnCatchMeHeight = btnCatchMe.offsetHeight;
-        btnCatchMeWidth = btnCatchMe.offsetWidth;
-
+        function calcGameArea (){
         // How much can button go in the box without going out of the box, gameArea.clientHeight/clientWidth -
         // - is the size of the box without the border so it could calculate the actual visible size with size and padding!
         // Note: be careful when adding a padding it may change the size!
-        maxY = gameArea.clientHeight - btnCatchMeHeight;
-        maxX = gameArea.clientWidth - btnCatchMeWidth;
+        maxY = gameArea.clientHeight - originalBtnCatchMeHeight;
+        maxX = gameArea.clientWidth - originalBtnCatchMeWidth;
+    }
+
+        function saveOriginalBtnSize() {
+        if (!originalBtnCatchMeWidth) {
+            originalBtnCatchMeWidth = btnCatchMe.offsetWidth;
+            originalBtnCatchMeHeight = btnCatchMe.offsetHeight;
+        }
     }
 
         function moveBtn (){
@@ -49,12 +54,16 @@ alert("Js loaded!");
         function decreaseBtnSize(){
 
             if (points >= 10 && points < 20) {
-                btnCatchMe.style.width = btnCatchMeWidth - btnCatchMeWidth * 0.1 + "px";
-                btnCatchMe.style.height = btnCatchMeHeight - btnCatchMeHeight * 0.1 + "px"
+                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
+                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
             }
             else if(points >= 20 && points < 30){
-                btnCatchMe.style.width = btnCatchMeWidth - btnCatchMeWidth * 0.2 + "px";
-                btnCatchMe.style.height = btnCatchMeHeight - btnCatchMeHeight * 0.2 + "px"
+                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.2 + "px";
+                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.2 + "px"
+            }
+            else if(points >= 30 && points < 40){
+                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.3 + "px";
+                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
             }
         }
 
@@ -95,7 +104,6 @@ alert("Js loaded!");
                 }
             },1000)
         }
-
 
         function loadHighScore (){
             if (localStorage.getItem("HighScore")){
@@ -139,9 +147,12 @@ alert("Js loaded!");
         function startAutoMoveBtn (){
             clearInterval(moveInterval);
 
-            moveInterval = setInterval(function (){
-                moveBtn();
-            }, btnIntervalSpeed);
+
+            if(btnIntervalSpeed < 1000){
+                moveInterval = setInterval(function (){
+                    moveBtn();
+                }, btnIntervalSpeed);
+            }
         }
 
         function checkBtnInterval(){
@@ -151,8 +162,8 @@ alert("Js loaded!");
         }
 
         function resetBtnSize(){
-            btnCatchMe.style.width = btnCatchMeWidth + "px";
-            btnCatchMe.style.height = btnCatchMeHeight + "px";
+            btnCatchMe.style.width = originalBtnCatchMeWidth + "px";
+            btnCatchMe.style.height = originalBtnCatchMeHeight + "px";
         }
 
         function resetGame (){
@@ -160,13 +171,14 @@ alert("Js loaded!");
             resetBtnSize();
 
             points = 0;
-            time = 3;
-            btnCatchMe.style.display = "block";
+            time = 30;
+            btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
             finalPointsColor.style.display = "none";
             colorPoints.textContent = points;
             btnIntervalSpeed = 1000;
 
+            saveOriginalBtnSize();
             calcGameArea();
 
             moveBtn();
@@ -179,6 +191,9 @@ alert("Js loaded!");
             timerForGame();
 
             btnPlayAgain.style.display = "none";
+
+            console.log(originalBtnCatchMeHeight);
+            console.log(originalBtnCatchMeWidth);
         }
 
         function playAgain (){
