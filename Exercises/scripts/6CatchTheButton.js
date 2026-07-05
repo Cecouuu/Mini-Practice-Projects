@@ -1,4 +1,4 @@
-// alert("Js loaded!");
+alert("Js loaded!");
     const btnCatchMe = document.querySelector("#btnCatchMe");
 
     const timerText = document.querySelector("#timer");
@@ -44,9 +44,22 @@
             gameOverSound.play();
         }
 
-        function levelUpSound(){
+        function playLevelUpSound(){
             levelUpSound.currentTime = 0;
             levelUpSound.play();
+        }
+
+
+        function levelCheck (){
+            if (points === 9){
+                playLevelUpSound();
+            }
+            else if (points === 19){
+                playLevelUpSound();
+            }
+            else if (points === 29){
+                playLevelUpSound();
+            }
         }
 
         function calcGameArea (){
@@ -113,6 +126,7 @@
                 time--;
                 if(time <= 30 && time >= 0){
                     timerText.textContent = `${time}`;
+
                 }
                 else {
                     clearInterval(timer);
@@ -189,7 +203,7 @@
             resetBtnSize();
 
             points = 0;
-            time = 30;
+            time = 3;
             btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
             finalPointsColor.style.display = "none";
@@ -209,9 +223,6 @@
             timerForGame();
 
             btnPlayAgain.style.display = "none";
-
-            console.log(originalBtnCatchMeHeight);
-            console.log(originalBtnCatchMeWidth);
         }
 
         function playAgain (){
@@ -232,8 +243,8 @@
             btnCatchMe.style.display = "none";
             gameOver.textContent = "GAME OVER";
 
-            finalPoints.style.display = "flex";
-            finalPointsColor.style.display = "block";
+            finalPoints.style.display = "block";
+            finalPointsColor.style.display = "flex";
             finalPointsColor.textContent = `${points}`;
 
             btnPlayAgain.style.display = "block";
@@ -251,6 +262,7 @@
     btnCatchMe.addEventListener("click", function (){
 
         playClickSound();
+        levelCheck();
 
         points++;
         colorPoints.textContent = `${points}`;
