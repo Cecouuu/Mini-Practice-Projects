@@ -1,4 +1,4 @@
-alert("Js loaded!");
+// alert("Js loaded!");
     const btnCatchMe = document.querySelector("#btnCatchMe");
 
     const timerText = document.querySelector("#timer");
@@ -9,10 +9,15 @@ alert("Js loaded!");
     const finalPoints = document.querySelector("#finalPoints");
     const finalPointsColor = document.querySelector("#finalPointsColor");
     const highScoreColor = document.querySelector("#highScoreColor");
+    const WelcomeMessage = document.querySelector("#WelcomeMessage");
 
     const displayGame = document.querySelector("#displayGame");
     const btnStartGame = document.querySelector("#btnStartGame");
     const btnPlayAgain = document.querySelector("#btnPlayAgain");
+
+    const clickSound = new Audio("tools/sounds/PointsSoundOnClick.mp3");
+    const gameOverSound = new Audio("tools/sounds/GameOverSound.mp3");
+    const levelUpSound = new Audio("tools/sounds/LevelUpSound.mp3");
 
     let originalBtnCatchMeWidth;
     let originalBtnCatchMeHeight;
@@ -27,9 +32,22 @@ alert("Js loaded!");
     let maxX;
     let maxY;
 
-
-
     const gameArea = document.querySelector("#gameArea");
+
+        function playClickSound (){
+            clickSound.currentTime = 0;
+            clickSound.play();
+        }
+
+        function playGameOverSound(){
+            gameOverSound.currentTime = 0;
+            gameOverSound.play();
+        }
+
+        function levelUpSound(){
+            levelUpSound.currentTime = 0;
+            levelUpSound.play();
+        }
 
         function calcGameArea (){
         // How much can button go in the box without going out of the box, gameArea.clientHeight/clientWidth -
@@ -203,11 +221,14 @@ alert("Js loaded!");
         function startGame() {
             displayGame.style.display = "block";
             btnStartGame.style.display = "none";
+            WelcomeMessage.style.display = "none";
 
             resetGame();
         }
 
         function displayGameOver (){
+            playGameOverSound();
+
             btnCatchMe.style.display = "none";
             gameOver.textContent = "GAME OVER";
 
@@ -228,6 +249,9 @@ alert("Js loaded!");
         }
 
     btnCatchMe.addEventListener("click", function (){
+
+        playClickSound();
+
         points++;
         colorPoints.textContent = `${points}`;
 
