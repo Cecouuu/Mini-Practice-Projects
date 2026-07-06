@@ -34,6 +34,13 @@ alert("Js loaded!");
 
     const gameArea = document.querySelector("#gameArea");
 
+    const LEVEL_2 = 10;
+    const LEVEL_3 = 20;
+    const LEVEL_4 = 30;
+    const LEVEL_5 = 40;
+
+    const LEVELS = [LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5];
+
         function playClickSound (){
             clickSound.currentTime = 0;
             clickSound.play();
@@ -49,15 +56,8 @@ alert("Js loaded!");
             levelUpSound.play();
         }
 
-
         function levelCheck (){
-            if (points === 9){
-                playLevelUpSound();
-            }
-            else if (points === 19){
-                playLevelUpSound();
-            }
-            else if (points === 29){
+            if (LEVELS.includes(points)){
                 playLevelUpSound();
             }
         }
@@ -84,15 +84,15 @@ alert("Js loaded!");
 
         function decreaseBtnSize(){
 
-            if (points >= 10 && points < 20) {
+            if (points >= LEVEL_2 && points < LEVEL_3) {
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
             }
-            else if(points >= 20 && points < 30){
+            else if(points >= LEVEL_3 && points < LEVEL_4){
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.2 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.2 + "px"
             }
-            else if(points >= 30 && points < 40){
+            else if(points >= LEVEL_4 && points < LEVEL_5){
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.3 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
             }
@@ -162,23 +162,22 @@ alert("Js loaded!");
             // Sets the old speed before changes so it could change when is needed in the function checkBtnInterval();
             oldBtnIntervalSpeed = btnIntervalSpeed;
 
-            if (points < 10 && points >= 0){
+            if (points < LEVEL_2 && points >= 0){
                 btnIntervalSpeed = 1000;
             }
-            else if (points < 20 && points >= 10){
+            else if (points < LEVEL_3 && points >= LEVEL_2){
                 btnIntervalSpeed = 800;
             }
-            else if (points < 30 && points >= 20){
+            else if (points < LEVEL_4 && points >= LEVEL_3){
                 btnIntervalSpeed = 500;
             }
-            else if (points >= 30){
+            else if (points >= LEVEL_4){
                 btnIntervalSpeed = 250;
             }
         }
 
         function startAutoMoveBtn (){
             clearInterval(moveInterval);
-
 
             if(btnIntervalSpeed < 1000){
                 moveInterval = setInterval(function (){
@@ -203,7 +202,7 @@ alert("Js loaded!");
             resetBtnSize();
 
             points = 0;
-            time = 3;
+            time = 30;
             btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
             finalPointsColor.style.display = "none";
@@ -250,7 +249,8 @@ alert("Js loaded!");
             btnPlayAgain.style.display = "block";
         }
 
-        function updateDifficulty(){
+        function updateLevel(){
+            levelCheck();
 
             decreaseBtnSize();
 
@@ -259,15 +259,17 @@ alert("Js loaded!");
             checkBtnInterval();
         }
 
+
+
     btnCatchMe.addEventListener("click", function (){
 
         playClickSound();
-        levelCheck();
+        updateLevel();
 
         points++;
         colorPoints.textContent = `${points}`;
 
-        updateDifficulty();
+        updateLevel();
 
         updateColorsForPoints();
 
