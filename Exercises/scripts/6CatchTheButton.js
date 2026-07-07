@@ -41,24 +41,14 @@ alert("Js loaded!");
 
     const LEVELS = [LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5];
 
-        function playClickSound (){
-            clickSound.currentTime = 0;
-            clickSound.play();
-        }
-
-        function playGameOverSound(){
-            gameOverSound.currentTime = 0;
-            gameOverSound.play();
-        }
-
-        function playLevelUpSound(){
-            levelUpSound.currentTime = 0;
-            levelUpSound.play();
+        function playSound (sound){
+            sound.currentTime = 0;
+            sound.play();
         }
 
         function levelCheck (){
             if (LEVELS.includes(points)){
-                playLevelUpSound();
+                playSound(levelUpSound);
             }
         }
 
@@ -84,15 +74,19 @@ alert("Js loaded!");
 
         function decreaseBtnSize(){
 
-            if (points >= LEVEL_2 && points < LEVEL_3) {
+            if (points < LEVEL_2){
+                btnCatchMe.style.width = originalBtnCatchMeWidth + "px";
+                btnCatchMe.style.height = originalBtnCatchMeHeight + "px"
+            }
+            else if (points < LEVEL_3) {
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
             }
-            else if(points >= LEVEL_3 && points < LEVEL_4){
+            else if( points < LEVEL_4){
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.2 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.2 + "px"
             }
-            else if(points >= LEVEL_4 && points < LEVEL_5){
+            else if(points < LEVEL_5){
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.3 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
             }
@@ -158,38 +152,44 @@ alert("Js loaded!");
             updateColorsForPoints();
         }
 
-        function setBtnSpeedInterval (){
-            // Sets the old speed before changes so it could change when is needed in the function checkBtnInterval();
-            oldBtnIntervalSpeed = btnIntervalSpeed;
 
-            if (points < LEVEL_2 && points >= 0){
-                btnIntervalSpeed = 1000;
-            }
-            else if (points < LEVEL_3 && points >= LEVEL_2){
-                btnIntervalSpeed = 800;
-            }
-            else if (points < LEVEL_4 && points >= LEVEL_3){
-                btnIntervalSpeed = 500;
-            }
-            else if (points >= LEVEL_4){
-                btnIntervalSpeed = 250;
-            }
-        }
 
         function startAutoMoveBtn (){
             clearInterval(moveInterval);
 
-            if(btnIntervalSpeed < 1000){
-                moveInterval = setInterval(function (){
-                    moveBtn();
-                }, btnIntervalSpeed);
+            if(btnIntervalSpeed === 1000){
+                return;
             }
+            moveInterval = setInterval(moveBtn, btnIntervalSpeed);
         }
 
-        function checkBtnInterval(){
-            if (oldBtnIntervalSpeed !== btnIntervalSpeed){
-                startAutoMoveBtn();
+        function setBtnSpeedInterval(){
+
+            let newSpeed;
+
+            if (points < LEVEL_2){
+                newSpeed = 1000;
             }
+            else if (points < LEVEL_3){
+                newSpeed = 800;
+            }
+            else if (points < LEVEL_4){
+                newSpeed = 500;
+            }
+            else if (points < LEVEL_5){
+                newSpeed = 250;
+            }
+            else {
+                newSpeed = 125;
+            }
+
+            if(newSpeed === btnIntervalSpeed){
+                return;
+            }
+
+            btnIntervalSpeed = newSpeed;
+
+            startAutoMoveBtn();
         }
 
         function resetBtnSize(){
@@ -237,12 +237,12 @@ alert("Js loaded!");
         }
 
         function displayGameOver (){
-            playGameOverSound();
+            playSound(gameOverSound);
 
             btnCatchMe.style.display = "none";
             gameOver.textContent = "GAME OVER";
 
-            finalPoints.style.display = "block";
+            finalPoints.style.display = "flex";
             finalPointsColor.style.display = "flex";
             finalPointsColor.textContent = `${points}`;
 
@@ -255,16 +255,11 @@ alert("Js loaded!");
             decreaseBtnSize();
 
             setBtnSpeedInterval();
-
-            checkBtnInterval();
         }
-
-
 
     btnCatchMe.addEventListener("click", function (){
 
-        playClickSound();
-        updateLevel();
+        playSound(clickSound);
 
         points++;
         colorPoints.textContent = `${points}`;
@@ -276,12 +271,8 @@ alert("Js loaded!");
         moveBtn();
     })
 
-    btnStartGame.addEventListener("click",function (){
-        startGame();
-    });
+    btnStartGame.addEventListener("click", startGame);
 
-    btnPlayAgain.addEventListener("click", function (){
-        playAgain();
-    })
+    btnPlayAgain.addEventListener("click", playAgain);
 
     loadHighScore();
