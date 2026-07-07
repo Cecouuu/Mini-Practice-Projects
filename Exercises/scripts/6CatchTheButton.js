@@ -41,6 +41,39 @@ alert("Js loaded!");
 
     const LEVELS = [LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5];
 
+    const difficulties = [
+        {
+            level: 1,
+            points: 0,
+            speed: 1000,
+            size: 1
+        },
+        {
+            level: 2,
+            points: 10,
+            speed: 800,
+            size: 0.1
+        },
+        {
+            level: 3,
+            points: 20,
+            speed: 500,
+            size: 0.2
+        },
+        {
+            level: 4,
+            points: 30,
+            speed: 250,
+            size: 0.3
+        },
+        {
+            level: 5,
+            points: 40,
+            speed: 185,
+            size: 0.4
+        }
+    ]
+
         function playSound (sound){
             sound.currentTime = 0;
             sound.play();
@@ -89,6 +122,11 @@ alert("Js loaded!");
             else if(points < LEVEL_5){
                 btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.3 + "px";
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
+            }
+
+            if (points < difficulties[0].points){
+                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
+                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
             }
         }
 
