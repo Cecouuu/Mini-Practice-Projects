@@ -74,6 +74,16 @@ alert("Js loaded!");
         }
     ]
 
+        let currentDifficulty;
+
+        function setCurrentDifficulty(){
+            for (let i = 0; i < difficulties.length; i++){
+                if (points >= difficulties[i].points){
+                    currentDifficulty = difficulties[i];
+                }
+            }
+        }
+
         function playSound (sound){
             sound.currentTime = 0;
             sound.play();
@@ -124,21 +134,24 @@ alert("Js loaded!");
                 btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
             }
 
-            if (points < difficulties[0].points){
-                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
-                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
+            while(true){
+                if (points < currentDifficulty.points){
+
+                    return;
+                }
             }
+
         }
 
         function setColorForPoints(score){
             if (score < 10){
                 return "red"
             }
-            else if (score >= 10 && score < 20)
+            else if (score < 20)
             {
                 return "orange"
             }
-            else if (score >= 20){
+            else if (score > 20){
                 return "green"
             }
         }
@@ -180,7 +193,6 @@ alert("Js loaded!");
         }
 
         function saveHighScore(){
-            updateHighScoreText();
 
             if (points > highScore){
                 highScore = points;
