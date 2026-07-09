@@ -27,50 +27,47 @@ alert("Js loaded!");
     let highScore = 0;
     let moveInterval;
     let btnIntervalSpeed = 1000;
-    let oldBtnIntervalSpeed;
 
     let maxX;
     let maxY;
 
     const gameArea = document.querySelector("#gameArea");
 
-    const LEVEL_2 = 10;
-    const LEVEL_3 = 20;
-    const LEVEL_4 = 30;
-    const LEVEL_5 = 40;
-
-    const LEVELS = [LEVEL_2,LEVEL_3,LEVEL_4,LEVEL_5];
-
     const difficulties = [
         {
             level: 1,
             points: 0,
             speed: 1000,
-            size: 1
+            size: 1,
+            color: "red"
         },
         {
             level: 2,
             points: 10,
             speed: 800,
-            size: 0.1
+            size: 0.1,
+            color: "orange"
         },
         {
             level: 3,
             points: 20,
             speed: 500,
-            size: 0.2
+            size: 0.2,
+            color: "green"
         },
         {
             level: 4,
             points: 30,
             speed: 250,
-            size: 0.3
+            size: 0.3,
+            color: "green"
         },
         {
             level: 5,
             points: 40,
             speed: 185,
-            size: 0.4
+            size: 0.4,
+            color: "green"
         }
     ]
 
@@ -81,18 +78,15 @@ alert("Js loaded!");
                 if (points >= difficulties[i].points){
                     currentDifficulty = difficulties[i];
                 }
+                if (points === difficulties[i].points){
+                    playSound(levelUpSound);
+                }
             }
         }
 
         function playSound (sound){
             sound.currentTime = 0;
             sound.play();
-        }
-
-        function levelCheck (){
-            if (LEVELS.includes(points)){
-                playSound(levelUpSound);
-            }
         }
 
         function calcGameArea (){
@@ -116,31 +110,8 @@ alert("Js loaded!");
         }
 
         function decreaseBtnSize(){
-
-            if (points < LEVEL_2){
-                btnCatchMe.style.width = originalBtnCatchMeWidth + "px";
-                btnCatchMe.style.height = originalBtnCatchMeHeight + "px"
-            }
-            else if (points < LEVEL_3) {
-                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.1 + "px";
-                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.1  + "px"
-            }
-            else if( points < LEVEL_4){
-                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.2 + "px";
-                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.2 + "px"
-            }
-            else if(points < LEVEL_5){
-                btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * 0.3 + "px";
-                btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * 0.3  + "px"
-            }
-
-            while(true){
-                if (points < currentDifficulty.points){
-
-                    return;
-                }
-            }
-
+            btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * currentDifficulty.size + "px";
+            btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * currentDifficulty.size  + "px"
         }
 
         function setColorForPoints(score){
@@ -151,7 +122,7 @@ alert("Js loaded!");
             {
                 return "orange"
             }
-            else if (score > 20){
+            else if (score >= 20){
                 return "green"
             }
         }
@@ -202,44 +173,12 @@ alert("Js loaded!");
             updateColorsForPoints();
         }
 
-
-
         function startAutoMoveBtn (){
-            clearInterval(moveInterval);
-
-            if(btnIntervalSpeed === 1000){
-                return;
+            if (btnIntervalSpeed !== currentDifficulty.speed){
+                clearInterval(moveInterval);
+                btnIntervalSpeed = currentDifficulty.speed;
+                moveInterval = setInterval(moveBtn, currentDifficulty.speed);
             }
-            moveInterval = setInterval(moveBtn, btnIntervalSpeed);
-        }
-
-        function setBtnSpeedInterval(){
-
-            let newSpeed;
-
-            if (points < LEVEL_2){
-                newSpeed = 1000;
-            }
-            else if (points < LEVEL_3){
-                newSpeed = 800;
-            }
-            else if (points < LEVEL_4){
-                newSpeed = 500;
-            }
-            else if (points < LEVEL_5){
-                newSpeed = 250;
-            }
-            else {
-                newSpeed = 125;
-            }
-
-            if(newSpeed === btnIntervalSpeed){
-                return;
-            }
-
-            btnIntervalSpeed = newSpeed;
-
-            startAutoMoveBtn();
         }
 
         function resetBtnSize(){
@@ -300,11 +239,11 @@ alert("Js loaded!");
         }
 
         function updateLevel(){
-            levelCheck();
+            setCurrentDifficulty();
 
             decreaseBtnSize();
 
-            setBtnSpeedInterval();
+            startAutoMoveBtn();
         }
 
     btnCatchMe.addEventListener("click", function (){
