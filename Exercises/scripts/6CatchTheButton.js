@@ -1,4 +1,4 @@
-alert("Js loaded!");
+// alert("Js loaded!");
     const btnCatchMe = document.querySelector("#btnCatchMe");
 
     const timerText = document.querySelector("#timer");
@@ -24,6 +24,7 @@ alert("Js loaded!");
 
     let points = 0;
     let time;
+    let currentTimerForGame;
     let highScore = 0;
     let moveInterval;
     let btnIntervalSpeed = 1000;
@@ -38,7 +39,7 @@ alert("Js loaded!");
             level: 1,
             points: 0,
             speed: 1000,
-            size: 1,
+            size: 0,
             color: "red"
         },
         {
@@ -70,7 +71,7 @@ alert("Js loaded!");
             color: "green"
         }
     ]
-
+        console.log(difficulties.length);
         let currentDifficulty;
 
         function setCurrentDifficulty(){
@@ -78,7 +79,7 @@ alert("Js loaded!");
                 if (points >= difficulties[i].points){
                     currentDifficulty = difficulties[i];
                 }
-                if (points === difficulties[i].points){
+                if (points === difficulties[i].points && points !== 0){
                     playSound(levelUpSound);
                 }
             }
@@ -115,15 +116,10 @@ alert("Js loaded!");
         }
 
         function setColorForPoints(score){
-            if (score < 10){
-                return "red"
-            }
-            else if (score < 20)
-            {
-                return "orange"
-            }
-            else if (score >= 20){
-                return "green"
+            for (let i = difficulties.length - 1; i >= 0; i--){
+                if (score >= difficulties[i].points){
+                    return difficulties[i].color;
+                }
             }
         }
 
@@ -140,9 +136,9 @@ alert("Js loaded!");
         function timerForGame (){
             const timer = setInterval(function (){
                 time--;
-                if(time <= 30 && time >= 0){
+                if(time <= currentTimerForGame && time >= 0){
+                    updateColorsForPoints();
                     timerText.textContent = `${time}`;
-
                 }
                 else {
                     clearInterval(timer);
@@ -192,6 +188,8 @@ alert("Js loaded!");
 
             points = 0;
             time = 30;
+            timerText.textContent = time;
+            currentTimerForGame = time;
             btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
             finalPointsColor.style.display = "none";
@@ -200,6 +198,7 @@ alert("Js loaded!");
 
             saveOriginalBtnSize();
             calcGameArea();
+            setCurrentDifficulty();
 
             moveBtn();
             startAutoMoveBtn();
