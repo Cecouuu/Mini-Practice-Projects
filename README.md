@@ -1,17 +1,21 @@
 # Mini-Practice-Projects
-<b><p> 
+<b>
+<p> 
   Practising technologies such as: HTML5, CSS3, Bootstrap5, PHP and JS.
-</p></b>
+</p>
+</b>
 
-<b><p>
+<b>
+<p>
   Here I'm learning new methods and skills in the technologies I use. Also I'm practising the knowledge of the current technologies that I know!
-</p></b>
+</p>
+</b>
 
 
 # Exelpore the files and check out what actually I can do and what I'm focused on, and what I'm learning.
 
 # In progress:
-
+  Catch the Button game - JS.
 # Future projects: 
 - Weather app by API.
 
@@ -23,7 +27,7 @@
 </ul> 
 
   <h3>JavaScript Projects:</h3>
-<ul style="color:red">
+<ul>
   <li>Live Greeting</li>
   <li>Counter for symbols</li>
   <li>Dark Mode</li>
