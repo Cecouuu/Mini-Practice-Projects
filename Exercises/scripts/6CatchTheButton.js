@@ -24,7 +24,6 @@
 
     let points = 0;
     let time;
-    let currentTimerForGame;
     let highScore = 0;
     let moveInterval;
     let btnIntervalSpeed = 1000;
@@ -136,7 +135,7 @@
         function timerForGame (){
             const timer = setInterval(function (){
                 time--;
-                if(time <= currentTimerForGame && time >= 0){
+                if(time >= 0){
                     updateColorsForPoints();
                     timerText.textContent = `${time}`;
                 }
@@ -189,7 +188,6 @@
             points = 0;
             time = 30;
             timerText.textContent = time;
-            currentTimerForGame = time;
             btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
             finalPointsColor.style.display = "none";
