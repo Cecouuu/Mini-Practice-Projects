@@ -19,6 +19,10 @@
     const gameOverSound = new Audio("tools/sounds/GameOverSound.mp3");
     const levelUpSound = new Audio("tools/sounds/LevelUpSound.mp3");
 
+    const EasyGameMode = document.querySelector("#EasyGameMode");
+    const MediumGameMode = document.querySelector("#MediumGameMode");
+    const HardGameMode = document.querySelector("#HardGameMode");
+
     let originalBtnCatchMeWidth;
     let originalBtnCatchMeHeight;
 
@@ -34,6 +38,7 @@
     const gameArea = document.querySelector("#gameArea");
     let currentGameMode;
     let currentDifficulty;
+
 
     const gameMode = [
         {
