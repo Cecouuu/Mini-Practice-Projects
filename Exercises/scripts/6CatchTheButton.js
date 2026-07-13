@@ -32,46 +32,137 @@
     let maxY;
 
     const gameArea = document.querySelector("#gameArea");
+    let currentGameMode;
+    let currentDifficulty;
 
-    const difficulties = [
+    const gameMode = [
         {
-            level: 1,
-            points: 0,
-            speed: 1000,
-            size: 0,
-            color: "red"
+            name: `Easy`,
+            time: 45,
+            difficulties: [
+                {
+                    level: 1,
+                    points: 0,
+                    speed: 1000,
+                    size: 0,
+                    color: "#f60213"
+                },
+                {
+                    level: 2,
+                    points: 10,
+                    speed: 900,
+                    size: 0.05,
+                    color: "#fa900c"
+                },
+                {
+                    level: 3,
+                    points: 20,
+                    speed: 800,
+                    size: 0.1,
+                    color: "#1b5ae8"
+                },
+                {
+                    level: 4,
+                    points: 30,
+                    speed: 650,
+                    size: 0.125,
+                    color: "#06f3d8"
+                },
+                {
+                    level: 5,
+                    points: 40,
+                    speed: 500,
+                    size: 0.175,
+                    color: "#61ff00"
+                }
+            ]
         },
         {
-            level: 2,
-            points: 10,
-            speed: 800,
-            size: 0.1,
-            color: "orange"
+            name: `Medium`,
+            time: 30,
+            difficulties: [
+                {
+                    level: 1,
+                    points: 0,
+                    speed: 900,
+                    size: 0,
+                    color: "#f60213"
+                },
+                {
+                    level: 2,
+                    points: 10,
+                    speed: 800,
+                    size: 0.1,
+                    color: "#fa900c"
+                },
+                {
+                    level: 3,
+                    points: 20,
+                    speed: 700,
+                    size: 0.2,
+                    color: "#1b5ae8"
+                },
+                {
+                    level: 4,
+                    points: 30,
+                    speed: 500,
+                    size: 0.25,
+                    color: "#06f3d8"
+                },
+                {
+                    level: 5,
+                    points: 40,
+                    speed: 414,
+                    size: 0.314,
+                    color: "#61ff00"
+                }
+            ]
         },
         {
-            level: 3,
-            points: 20,
-            speed: 500,
-            size: 0.2,
-            color: "green"
-        },
-        {
-            level: 4,
-            points: 30,
-            speed: 250,
-            size: 0.3,
-            color: "green"
-        },
-        {
-            level: 5,
-            points: 40,
-            speed: 185,
-            size: 0.4,
-            color: "green"
+            name: `Hard`,
+            time: 20,
+            difficulties: [
+                {
+                    level: 1,
+                    points: 0,
+                    speed: 800,
+                    size: 0.2,
+                    color: "#f60213"
+                },
+                {
+                    level: 2,
+                    points: 10,
+                    speed: 600,
+                    size: 0.3,
+                    color: "#fa900c"
+                },
+                {
+                    level: 3,
+                    points: 20,
+                    speed: 550,
+                    size: 0.35,
+                    color: "#1b5ae8"
+                },
+                {
+                    level: 4,
+                    points: 30,
+                    speed: 400,
+                    size: 0.4,
+                    color: "#06f3d8"
+                },
+                {
+                    level: 5,
+                    points: 40,
+                    speed: 314,
+                    size: 0.514,
+                    color: "#61ff00"
+                }
+            ]
         }
     ]
-        console.log(difficulties.length);
-        let currentDifficulty;
+
+        console.log(gameMode[0].difficulties.length);
+
 
         function setCurrentDifficulty(){
             for (let i = 0; i < difficulties.length; i++){
