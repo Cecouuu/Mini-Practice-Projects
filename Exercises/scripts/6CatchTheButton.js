@@ -1,4 +1,4 @@
-// alert("Js loaded!");
+alert("Js loaded!");
     const btnCatchMe = document.querySelector("#btnCatchMe");
 
     const timerText = document.querySelector("#timer");
@@ -22,6 +22,9 @@
     const EasyGameMode = document.querySelector("#EasyGameMode");
     const MediumGameMode = document.querySelector("#MediumGameMode");
     const HardGameMode = document.querySelector("#HardGameMode");
+    const DisplayCurrentGameMode = document.querySelector("#DisplayCurrentGameMode");
+    const CurrentGameModeBox = document.querySelector("#CurrentGameModeBox");
+    const EmptyGameMode = document.querySelector("#EmptyGameMode");
 
     let originalBtnCatchMeWidth;
     let originalBtnCatchMeHeight;
@@ -168,13 +171,12 @@
 
         console.log(gameMode[0].difficulties.length);
 
-
         function setCurrentDifficulty(){
-            for (let i = 0; i < difficulties.length; i++){
-                if (points >= difficulties[i].points){
-                    currentDifficulty = difficulties[i];
+            for (let i = 0; i < currentGameMode.difficulties.length; i++){
+                if (points >= currentGameMode.difficulties[i].points){
+                    currentDifficulty = currentGameMode.difficulties[i];
                 }
-                if (points === difficulties[i].points && points !== 0){
+                if (points === currentGameMode.difficulties[i].points && points !== 0){
                     playSound(levelUpSound);
                 }
             }
@@ -211,9 +213,9 @@
         }
 
         function setColorForPoints(score){
-            for (let i = difficulties.length - 1; i >= 0; i--){
-                if (score >= difficulties[i].points){
-                    return difficulties[i].color;
+            for (let i = currentGameMode.difficulties.length - 1; i >= 0; i--){
+                if (score >= currentGameMode.difficulties[i].points){
+                    return currentGameMode.difficulties[i].color;
                 }
             }
         }
@@ -282,7 +284,7 @@
             resetBtnSize();
 
             points = 0;
-            time = 30;
+            time = currentGameMode.time;
             timerText.textContent = time;
             btnCatchMe.style.display = "flex";
             gameOver.textContent = "";
@@ -314,8 +316,15 @@
             displayGame.style.display = "block";
             btnStartGame.style.display = "none";
             WelcomeMessage.style.display = "none";
+            CurrentGameModeBox.style.display = "none";
+            if (currentGameMode){
+                EmptyGameMode.style.display = "none";
+                resetGame();
+            }
+            else {
+                EmptyGameMode.style.display = "flex";
 
-            resetGame();
+            }
         }
 
         function displayGameOver (){
@@ -351,6 +360,28 @@
         updateColorsForPoints();
 
         moveBtn();
+    })
+
+    EasyGameMode.addEventListener(`click`, function (){
+        EasyGameMode.style.backgroundColor = "#064b77";
+        MediumGameMode.style.backgroundColor = "#6c757d";
+        HardGameMode.style.backgroundColor = "#6c757d";
+        currentGameMode = gameMode[0]; //Easy mode!
+        DisplayCurrentGameMode.textContent = `Easy mode.`;
+    })
+    MediumGameMode.addEventListener(`click`, function (){
+        EasyGameMode.style.backgroundColor = "#6c757d";
+        MediumGameMode.style.backgroundColor = "#064b77";
+        HardGameMode.style.backgroundColor = "#6c757d";
+        currentGameMode = gameMode[1]; //Medium mode!
+        DisplayCurrentGameMode.textContent = `Medium mode.`;
+    })
+    HardGameMode.addEventListener(`click`, function (){
+        EasyGameMode.style.backgroundColor = "#6c757d";
+        MediumGameMode.style.backgroundColor = "#6c757d";
+        HardGameMode.style.backgroundColor = "#064b77";
+        currentGameMode = gameMode[2]; //Hard mode!
+        DisplayCurrentGameMode.textContent = `Hard mode.`;
     })
 
     btnStartGame.addEventListener("click", startGame);

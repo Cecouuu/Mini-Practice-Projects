@@ -29,18 +29,21 @@
                         <p class="justify-content-center align-items-center d-block">If you want to reach<span> High </span>Score, then press the Start button and begin your journey.</p>
                     </div>
 
-                    <div class="form-group justify-content-center align-items-center d-flex mt-2">
-                        <div class="d-block justify-content-center align-items-center">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option id="EasyGameMode">Easy</option>
-                                    <option id="MediumGameMode">Medium</option>
-                                    <option id="HardGameMode">Hard</option>
-                                </select>
+                    <div class="form-group d-block justify-content-center align-items-center mt-2" id="CurrentGameModeBox" style="width: 100%;">
+                        <p class="justify-content-center align-items-center d-flex my-1">Choose your Game Mode!</p>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-secondary mx-1" id="EasyGameMode">Easy</button>
+                            <button class="btn btn-secondary mx-1" id="MediumGameMode">Medium</button>
+                            <button class="btn btn-secondary mx-1" id="HardGameMode">Hard</button>
+                        </div>
+                        <p class="justify-content-center align-items-center d-flex mt-2">Current game mode: <span class="m-1" id="DisplayCurrentGameMode">...</span></p>
+                        <div class="alert alert-danger d-none justify-content-center align-items-center" id="EmptyGameMode">
+                            <p class="m-0">You must choose game mode level, before continuing!</p>
                         </div>
                     </div>
                 </div>
 
-                    <div class="form-group justify-content-center align-items-center d-flex mt-3">
+                    <div class="form-group justify-content-center align-items-center d-flex mb-3">
                         <button class="btn btn-secondary" id="btnStartGame">Start</button>
                     </div>
 
