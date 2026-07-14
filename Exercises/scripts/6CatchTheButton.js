@@ -1,4 +1,4 @@
-alert("Js loaded!");
+// alert("Js loaded!");
     const btnCatchMe = document.querySelector("#btnCatchMe");
 
     const timerText = document.querySelector("#timer");
@@ -24,7 +24,7 @@ alert("Js loaded!");
     const HardGameMode = document.querySelector("#HardGameMode");
     const DisplayCurrentGameMode = document.querySelector("#DisplayCurrentGameMode");
     const CurrentGameModeBox = document.querySelector("#CurrentGameModeBox");
-    const EmptyGameMode = document.querySelector("#EmptyGameMode");
+    const EmptyGameModeAlert = document.querySelector("#EmptyGameModeAlert");
 
     let originalBtnCatchMeWidth;
     let originalBtnCatchMeHeight;
@@ -176,6 +176,9 @@ alert("Js loaded!");
                 if (points >= currentGameMode.difficulties[i].points){
                     currentDifficulty = currentGameMode.difficulties[i];
                 }
+                else {
+                    break;
+                }
                 if (points === currentGameMode.difficulties[i].points && points !== 0){
                     playSound(levelUpSound);
                 }
@@ -313,17 +316,17 @@ alert("Js loaded!");
         }
 
         function startGame() {
-            displayGame.style.display = "block";
-            btnStartGame.style.display = "none";
-            WelcomeMessage.style.display = "none";
-            CurrentGameModeBox.style.display = "none";
-            if (currentGameMode){
-                EmptyGameMode.style.display = "none";
+
+            if (currentGameMode !== undefined){
+                displayGame.style.display = "block";
+                btnStartGame.style.display = "none";
+                WelcomeMessage.style.display = "none";
+                CurrentGameModeBox.style.display = "none";
+                EmptyGameModeAlert.style.display = "none";
                 resetGame();
             }
             else {
-                EmptyGameMode.style.display = "flex";
-
+                EmptyGameModeAlert.style.display = "flex";
             }
         }
 
@@ -361,6 +364,10 @@ alert("Js loaded!");
 
         moveBtn();
     })
+
+
+    function gameModeBtnSelector (){
+    }
 
     EasyGameMode.addEventListener(`click`, function (){
         EasyGameMode.style.backgroundColor = "#064b77";
