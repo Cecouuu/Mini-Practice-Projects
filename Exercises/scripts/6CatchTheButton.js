@@ -19,9 +19,10 @@
     const gameOverSound = new Audio("tools/sounds/GameOverSound.mp3");
     const levelUpSound = new Audio("tools/sounds/LevelUpSound.mp3");
 
-    const EasyGameMode = document.querySelector("#EasyGameMode");
-    const MediumGameMode = document.querySelector("#MediumGameMode");
-    const HardGameMode = document.querySelector("#HardGameMode");
+
+    const btnEasyGameMode = document.querySelector("#btnEasyGameMode");
+    const btnMediumGameMode = document.querySelector("#btnMediumGameMode");
+    const btnHardGameMode = document.querySelector("#btnHardGameMode");
     const DisplayCurrentGameMode = document.querySelector("#DisplayCurrentGameMode");
     const CurrentGameModeBox = document.querySelector("#CurrentGameModeBox");
     const EmptyGameModeAlert = document.querySelector("#EmptyGameModeAlert");
@@ -42,10 +43,9 @@
     let currentGameMode;
     let currentDifficulty;
 
-
     const gameMode = [
         {
-            name: `Easy`,
+            name: `Easy mode`,
             time: 45,
             difficulties: [
                 {
@@ -86,7 +86,7 @@
             ]
         },
         {
-            name: `Medium`,
+            name: `Medium mode`,
             time: 30,
             difficulties: [
                 {
@@ -127,7 +127,7 @@
             ]
         },
         {
-            name: `Hard`,
+            name: `Hard mode`,
             time: 20,
             difficulties: [
                 {
@@ -169,7 +169,35 @@
         }
     ]
 
-        console.log(gameMode[0].difficulties.length);
+    const gameModeButtons = [
+        {
+            button: btnEasyGameMode,
+            mode: gameMode[0]
+        },
+        {
+            button: btnMediumGameMode,
+            mode: gameMode[1]
+        },
+        {
+            button: btnHardGameMode,
+            mode: gameMode[2]
+        }
+    ]
+
+        gameModeButtons.forEach(function (item){
+            item.button.addEventListener("click",function(){
+                gameModeBtnSelector(item.button, item.mode)
+            })
+        })
+
+        function gameModeBtnSelector (selectedBtn, mode){
+            for (let i = 0; i < gameModeButtons.length; i++){
+                gameModeButtons[i].button.style.backgroundColor = "#6c757d";
+            }
+            selectedBtn.style.backgroundColor = "#064b77";
+            currentGameMode = mode;
+            DisplayCurrentGameMode.textContent = `${mode.name}`;
+        }
 
         function setCurrentDifficulty(){
             for (let i = 0; i < currentGameMode.difficulties.length; i++){
@@ -210,7 +238,7 @@
             btnCatchMe.style.left = Math.floor((Math.random() * maxX) + 1) + "px";
         }
 
-        function decreaseBtnSize(){
+        function updateButtonSize(){
             btnCatchMe.style.width = originalBtnCatchMeWidth - originalBtnCatchMeWidth * currentDifficulty.size + "px";
             btnCatchMe.style.height = originalBtnCatchMeHeight - originalBtnCatchMeHeight * currentDifficulty.size  + "px"
         }
@@ -346,7 +374,7 @@
         function updateLevel(){
             setCurrentDifficulty();
 
-            decreaseBtnSize();
+            updateButtonSize();
 
             startAutoMoveBtn();
         }
@@ -363,32 +391,6 @@
         updateColorsForPoints();
 
         moveBtn();
-    })
-
-
-    function gameModeBtnSelector (){
-    }
-
-    EasyGameMode.addEventListener(`click`, function (){
-        EasyGameMode.style.backgroundColor = "#064b77";
-        MediumGameMode.style.backgroundColor = "#6c757d";
-        HardGameMode.style.backgroundColor = "#6c757d";
-        currentGameMode = gameMode[0]; //Easy mode!
-        DisplayCurrentGameMode.textContent = `Easy mode.`;
-    })
-    MediumGameMode.addEventListener(`click`, function (){
-        EasyGameMode.style.backgroundColor = "#6c757d";
-        MediumGameMode.style.backgroundColor = "#064b77";
-        HardGameMode.style.backgroundColor = "#6c757d";
-        currentGameMode = gameMode[1]; //Medium mode!
-        DisplayCurrentGameMode.textContent = `Medium mode.`;
-    })
-    HardGameMode.addEventListener(`click`, function (){
-        EasyGameMode.style.backgroundColor = "#6c757d";
-        MediumGameMode.style.backgroundColor = "#6c757d";
-        HardGameMode.style.backgroundColor = "#064b77";
-        currentGameMode = gameMode[2]; //Hard mode!
-        DisplayCurrentGameMode.textContent = `Hard mode.`;
     })
 
     btnStartGame.addEventListener("click", startGame);
