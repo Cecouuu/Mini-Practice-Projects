@@ -35,8 +35,8 @@
 </ul>
 
 
-#New projects on going:
-- Catch the button game. js+php.<br>
+# New projects on going:
+- Catch the button game. (JavaScript).<br>
 
 Note: Added JS to learning practice and started to practice it more.
 To do: fix the files
