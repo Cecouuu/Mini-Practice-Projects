@@ -13,6 +13,7 @@
 
     const displayGame = document.querySelector("#displayGame");
     const btnStartGame = document.querySelector("#btnStartGame");
+    const btnBack = document.querySelector("#btnBack");
     const btnPlayAgain = document.querySelector("#btnPlayAgain");
 
     const clickSound = new Audio("tools/sounds/PointsSoundOnClick.mp3");
@@ -32,9 +33,9 @@
 
     let points = 0;
     let time;
-    let highScore = 0;
     let moveInterval;
     let btnIntervalSpeed = 1000;
+    let timer;
 
     let maxX;
     let maxY;
@@ -46,7 +47,9 @@
     const gameMode = [
         {
             name: `Easy mode`,
-            time: 45,
+            storageKey: "easyHighScore",
+            time: 3,
+            highScore: 0,
             difficulties: [
                 {
                     level: 1,
@@ -87,7 +90,9 @@
         },
         {
             name: `Medium mode`,
+            storageKey: "mediumHighScore",
             time: 30,
+            highScore: 0,
             difficulties: [
                 {
                     level: 1,
@@ -128,7 +133,9 @@
         },
         {
             name: `Hard mode`,
+            storageKey: "hardHighScore",
             time: 20,
+            highScore: 0,
             difficulties: [
                 {
                     level: 1,
@@ -197,6 +204,7 @@
             selectedBtn.style.backgroundColor = "#064b77";
             currentGameMode = mode;
             DisplayCurrentGameMode.textContent = `${mode.name}`;
+            loadHighScore();
         }
 
         function setCurrentDifficulty(){
@@ -254,15 +262,15 @@
         function updateColorsForPoints (){
             colorPoints.style.color = setColorForPoints(points);
             finalPointsColor.style.color = setColorForPoints(points);
-            highScoreColor.style.color = setColorForPoints(highScore);
+            highScoreColor.style.color = setColorForPoints(currentGameMode.highScore);
         }
 
         function updateHighScoreText(){
-            highScoreColor.textContent = highScore;
+            highScoreColor.textContent = currentGameMode.highScore;
         }
 
         function timerForGame (){
-            const timer = setInterval(function (){
+            timer = setInterval(function (){
                 time--;
                 if(time >= 0){
                     updateColorsForPoints();
@@ -278,20 +286,20 @@
         }
 
         function loadHighScore (){
-            if (localStorage.getItem("HighScore")){
-                highScore = (Number(localStorage.getItem("HighScore")));
-                highScoreColor.textContent = `${highScore}`;
+            if (localStorage.getItem(currentGameMode.storageKey)){
+                currentGameMode.highScore = (Number(localStorage.getItem(currentGameMode.storageKey)));
+                highScoreColor.textContent = `${currentGameMode.highScore}`;
             }else {
-                highScore = 0;
-                highScoreColor.textContent = `${highScore}`;
+                currentGameMode.highScore = 0;
+                highScoreColor.textContent = `${currentGameMode.highScore}`;
             }
         }
 
         function saveHighScore(){
 
-            if (points > highScore){
-                highScore = points;
-                localStorage.setItem("HighScore", `${highScore}`);
+            if (points > currentGameMode.highScore){
+                currentGameMode.highScore = points;
+                localStorage.setItem(currentGameMode.storageKey, `${currentGameMode.highScore}`);
                 updateHighScoreText();
             }
             updateColorsForPoints();
@@ -322,6 +330,7 @@
             finalPointsColor.style.display = "none";
             colorPoints.textContent = points;
             btnIntervalSpeed = 1000;
+            btnBack.style.display = "none";
 
             saveOriginalBtnSize();
             calcGameArea();
@@ -351,6 +360,7 @@
                 WelcomeMessage.style.display = "none";
                 CurrentGameModeBox.style.display = "none";
                 EmptyGameModeAlert.style.display = "none";
+                btnBack.style.display = "none";
                 resetGame();
             }
             else {
@@ -369,6 +379,7 @@
             finalPointsColor.textContent = `${points}`;
 
             btnPlayAgain.style.display = "block";
+            btnBack.style.display = "block"
         }
 
         function updateLevel(){
@@ -378,6 +389,19 @@
 
             startAutoMoveBtn();
         }
+
+        function backToStartMenu(){
+            clearInterval(timer);
+            resetGame();
+            displayGame.style.display = "none";
+            btnStartGame.style.display = "block";
+            WelcomeMessage.style.display = "block";
+            CurrentGameModeBox.style.display = "block";
+            EmptyGameModeAlert.style.display = "none";
+            btnBack.style.display = "none";
+        }
+
+    btnBack.addEventListener("click", backToStartMenu);
 
     btnCatchMe.addEventListener("click", function (){
 
@@ -391,10 +415,8 @@
         updateColorsForPoints();
 
         moveBtn();
-    })
+    });
 
     btnStartGame.addEventListener("click", startGame);
 
     btnPlayAgain.addEventListener("click", playAgain);
-
-    loadHighScore();
