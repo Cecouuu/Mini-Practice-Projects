@@ -11,7 +11,7 @@ characters = [
         color: `#9a1818`,
         character: {
             name: "Warrior",
-            health: 150,
+            health: 200,
             damage: 40,
             speed: 14
         },
@@ -21,7 +21,7 @@ characters = [
         color: `#6700c5`,
         character: {
             name: "Mage",
-            health: 150,
+            health: 120,
             damage: 54,
             speed: 11
         },
@@ -31,7 +31,7 @@ characters = [
         color: `#5bf65b`,
         character: {
             name: "Archer",
-            health: 150,
+            health: 110,
             damage: 35,
             speed: 17
         },
@@ -41,7 +41,7 @@ characters = [
         color: "#AA336A",
         character: {
             name: "Assassin",
-            health: 150,
+            health: 90,
             damage: 70,
             speed: 25
         }
@@ -60,9 +60,9 @@ function showCharacter(chosenCharacter,button,color){
         characters[i].button.style.backgroundColor = "#6c757d";
     }
     button.style.backgroundColor = color;
-    DisplayCurrentCharacter.innerHTML = `<br> 
+    DisplayCurrentCharacter.innerHTML = ` 
         Name: ${chosenCharacter.name}<br>
-        Health: ${chosenCharacter.health}<br>
-        Damage: ${chosenCharacter.damage}<br>
-        Speed: ${chosenCharacter.speed}`;
+        Health: ${chosenCharacter.health} ❤️<br>
+        Damage: ${chosenCharacter.damage} ⚔️<br>
+        Speed: ${chosenCharacter.speed} ⚡`;
 }
