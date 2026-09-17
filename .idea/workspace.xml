@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be6d60e6-e1f4-40a2-bc0b-a4b38eabf215" name="Changes" comment="Test1" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Cecouuu"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Cecouuu/Mini-Practice-Projects.git",
+    "accountId": "1234ee98-67c3-4fd6-acab-a12659399994"
+  }
+}]]></component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.000031813530299" />
+      <entry key="MS500" value="1.1260440568618244" />
+      <entry key="S2" value="1.5958412872870231" />
+      <entry key="S5" value="1.8129282969413474" />
+      <entry key="S10" value="1.9017088927589332" />
+      <entry key="S30" value="2.009784067455738" />
+      <entry key="S60" value="2.1919672317212706" />
+      <entry key="M2" value="2.448658479125567" />
+      <entry key="M5" value="2.727898008170315" />
+      <entry key="M10" value="2.870781342831811" />
+      <entry key="M15" value="2.9965352794931537" />
+      <entry key="M30" value="3.4873788163057324" />
+      <entry key="H1" value="4.245324694744313" />
+      <entry key="H2" value="4.939865114426572" />
+      <entry key="H4" value="5.4139445206564085" />
+      <entry key="D1" value="5.893482801872684" />
+      <entry key="W1" value="5.984551325058154" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9659670587695127" />
+      <entry key="MS500" value="1.1182659024009527" />
+      <entry key="S2" value="1.5930782997024793" />
+      <entry key="S5" value="1.8116721017614994" />
+      <entry key="S10" value="1.9010165986529235" />
+      <entry key="S30" value="2.002726986057309" />
+      <entry key="S60" value="2.1748258956242945" />
+      <entry key="M2" value="2.429586973627826" />
+      <entry key="M5" value="2.715556755929739" />
+      <entry key="M10" value="2.8635365400751667" />
+      <entry key="M15" value="2.991439595561181" />
+      <entry key="M30" value="3.484689875395438" />
+      <entry key="H1" value="4.2439428932618695" />
+      <entry key="H2" value="4.939164503944355" />
+      <entry key="H4" value="5.413591725885919" />
+      <entry key="D1" value="5.893423650678084" />
+      <entry key="W1" value="5.984542866174867" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3JRq7OdTDHPicT1no8gNCugzU24" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PS-262.10315.130" />
+        <option value="bundled-php-predefined-a98d8de5180a-9522f28f0b20-com.jetbrains.php.sharedIndexes-PS-262.10315.130" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be6d60e6-e1f4-40a2-bc0b-a4b38eabf215" name="Changes" comment="" />
+      <created>1789634060364</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789634060364</updated>
+      <workItem from="1789634061365" duration="2353000" />
+    </task>
+    <task id="LOCAL-00001" summary="new practice!">
+      <option name="closed" value="true" />
+      <created>1789635343011</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789635343011</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new practice!">
+      <option name="closed" value="true" />
+      <created>1789639676738</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1789639676738</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Test1">
+      <option name="closed" value="true" />
+      <created>1789639796110</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789639796110</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new practice!" />
+    <MESSAGE value="Test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test1" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
