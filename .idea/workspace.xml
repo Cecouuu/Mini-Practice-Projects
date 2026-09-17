@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be6d60e6-e1f4-40a2-bc0b-a4b38eabf215" name="Changes" comment="Test4">
+    <list default="true" id="be6d60e6-e1f4-40a2-bc0b-a4b38eabf215" name="Changes" comment="On going to practice map() and filter().">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercises/8mapExersice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Exercises/8mapExersice.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exercises/9filterExersice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Exercises/9filterExersice.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Exercises/scripts/9filterExersice.js" beforeDir="false" afterPath="$PROJECT_DIR$/Exercises/scripts/9filterExersice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,73 +27,73 @@
     &quot;assignee&quot;: &quot;Cecouuu&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Cecouuu/Mini-Practice-Projects.git",
-    "accountId": "dc7714ab-ef7b-40b5-aa65-16abb54eb46d"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Cecouuu/Mini-Practice-Projects.git&quot;,
+    &quot;accountId&quot;: &quot;dc7714ab-ef7b-40b5-aa65-16abb54eb46d&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0032620638874548" />
-      <entry key="MS500" value="1.3380566948765649" />
-      <entry key="S2" value="2.431672463436437" />
-      <entry key="S5" value="3.6519007324892043" />
-      <entry key="S10" value="4.915007739043402" />
-      <entry key="S30" value="8.0989048506914" />
-      <entry key="S60" value="12.569027912156029" />
-      <entry key="M2" value="25.997469883560157" />
-      <entry key="M5" value="71.33455812859474" />
-      <entry key="M10" value="147.15700565878856" />
-      <entry key="M15" value="215.17067175307557" />
-      <entry key="M30" value="352.2360610740031" />
-      <entry key="H1" value="473.7871310407954" />
-      <entry key="H2" value="556.9823892419015" />
-      <entry key="H4" value="606.0358190023301" />
-      <entry key="D1" value="651.3941713532904" />
-      <entry key="W1" value="659.6163484007874" />
+      <entry key="MS100" value="1.14719723725083" />
+      <entry key="MS500" value="1.9185684726178587" />
+      <entry key="S2" value="3.966736431970671" />
+      <entry key="S5" value="6.974946092201092" />
+      <entry key="S10" value="9.543709533648613" />
+      <entry key="S30" value="16.521441581765536" />
+      <entry key="S60" value="27.358196820945636" />
+      <entry key="M2" value="41.765587960844215" />
+      <entry key="M5" value="60.98624363822227" />
+      <entry key="M10" value="95.52377098059884" />
+      <entry key="M15" value="142.8035741980754" />
+      <entry key="M30" value="278.5153379091754" />
+      <entry key="H1" value="436.35981954557366" />
+      <entry key="H2" value="561.7099090837013" />
+      <entry key="H4" value="641.5836187812567" />
+      <entry key="D1" value="719.1363388728046" />
+      <entry key="W1" value="733.5615988680972" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.6008330212220378E-72" />
-      <entry key="MS500" value="4.38508249305452E-15" />
-      <entry key="S2" value="3.149911019636171E-4" />
-      <entry key="S5" value="0.05682976195488433" />
-      <entry key="S10" value="0.3350517240132537" />
-      <entry key="S30" value="1.2141815541025747" />
-      <entry key="S60" value="1.82231700593914" />
-      <entry key="M2" value="2.3271397199346424" />
-      <entry key="M5" value="3.3447536731397682" />
-      <entry key="M10" value="5.272833441745985" />
-      <entry key="M15" value="6.863525038972531" />
-      <entry key="M30" value="9.685168748608591" />
-      <entry key="H1" value="11.90687625658164" />
-      <entry key="H2" value="13.322888609124002" />
-      <entry key="H4" value="14.12558421877139" />
-      <entry key="D1" value="14.848981327627083" />
-      <entry key="W1" value="14.978292381621795" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="8.560365225397976E-88" />
+      <entry key="S2" value="1.7105834098933995E-22" />
+      <entry key="S5" value="2.001515122909017E-9" />
+      <entry key="S10" value="5.040758504275947E-5" />
+      <entry key="S30" value="0.053646196292215974" />
+      <entry key="S60" value="0.3232384864796037" />
+      <entry key="M2" value="0.8021019381847138" />
+      <entry key="M5" value="1.5230338200792857" />
+      <entry key="M10" value="2.7317749061543855" />
+      <entry key="M15" value="4.13543504457235" />
+      <entry key="M30" value="7.56744225657929" />
+      <entry key="H1" value="11.063061883330379" />
+      <entry key="H2" value="13.631717948656703" />
+      <entry key="H4" value="15.200614678288101" />
+      <entry key="D1" value="16.68259331087669" />
+      <entry key="W1" value="16.954206226855614" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0034533133035022233" />
-      <entry key="MS500" value="0.44836323641443265" />
-      <entry key="S2" value="1.8191091083496715" />
-      <entry key="S5" value="3.291154624735395" />
-      <entry key="S10" value="4.934627763331599" />
-      <entry key="S30" value="9.111822748124622" />
-      <entry key="S60" value="14.241516376452546" />
-      <entry key="M2" value="28.205493479961145" />
-      <entry key="M5" value="74.58479664493882" />
-      <entry key="M10" value="152.34971190195512" />
-      <entry key="M15" value="221.96360062676118" />
-      <entry key="M30" value="361.87037805502064" />
-      <entry key="H1" value="485.66224003611376" />
-      <entry key="H2" value="570.28732284279" />
-      <entry key="H4" value="620.1518302318374" />
-      <entry key="D1" value="666.2414669017076" />
-      <entry key="W1" value="674.5943976396176" />
+      <entry key="MS100" value="0.9362502712273214" />
+      <entry key="MS500" value="1.6515443249305832" />
+      <entry key="S2" value="3.825847301171733" />
+      <entry key="S5" value="6.841246155231643" />
+      <entry key="S10" value="9.432643957163204" />
+      <entry key="S30" value="16.505525269355132" />
+      <entry key="S60" value="27.61898422053434" />
+      <entry key="M2" value="42.51392103338885" />
+      <entry key="M5" value="62.472507718940484" />
+      <entry key="M10" value="98.22006498188208" />
+      <entry key="M15" value="146.9011140751777" />
+      <entry key="M30" value="286.04575949131953" />
+      <entry key="H1" value="447.3948563936679" />
+      <entry key="H2" value="575.3240421364821" />
+      <entry key="H4" value="656.7743363459351" />
+      <entry key="D1" value="735.8171073067439" />
+      <entry key="W1" value="750.5155397862352" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -143,7 +141,8 @@
       <option name="presentableId" value="Default" />
       <updated>1789634060364</updated>
       <workItem from="1789634061365" duration="2353000" />
-      <workItem from="1789639933824" duration="3769000" />
+      <workItem from="1789639933824" duration="4025000" />
+      <workItem from="1789652068817" duration="937000" />
     </task>
     <task id="LOCAL-00001" summary="new practice!">
       <option name="closed" value="true" />
@@ -209,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789640251318</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="On going to practice map() and filter().">
+      <option name="closed" value="true" />
+      <created>1789644245537</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1789644245537</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +251,8 @@
     <MESSAGE value="Test2" />
     <MESSAGE value="Test3" />
     <MESSAGE value="Test4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test4" />
+    <MESSAGE value="On going to practice map() and filter()." />
+    <option name="LAST_COMMIT_MESSAGE" value="On going to practice map() and filter()." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
