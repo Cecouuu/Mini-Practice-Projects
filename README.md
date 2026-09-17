@@ -12,7 +12,7 @@
 </b>
 
 
-# Exelpore the files and check out what actually I can do and what I'm focused on, and what I'm learning.
+# Explore the files and check out what actually I can do and what I'm focused on, and what I'm learning.
 
 # In progress:
   Catch the Button game - JS.
