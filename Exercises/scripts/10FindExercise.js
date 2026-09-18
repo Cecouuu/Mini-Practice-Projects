@@ -12,7 +12,7 @@ console.log(firstFoodAbove4$);
 const firstFoodNotStocked = foods.find((food) => !food.stocked);
 console.log(firstFoodNotStocked);
 
-const checkingFood = foods.find((food) => food.name === `Grapes`);
+const checkingFood = foods.find((food) => food.name === `melon`);
 
 if (checkingFood){
     console.log(`We have the food that you searched and it is: ${checkingFood.name}`);
